@@ -39,20 +39,20 @@ accepter において 下記の例のように、データの種別（＝APIの�
 ここでは、"Item" が指定されています。    
   
 ```
-"api_schema": "SAPMaintenanceItemCreate",
+"api_schema": "SAPMaintenanceItemCreates",
 "accepter": ["Item"],
-"maintenance_item": "",
+"maintenance_plan": "1",
 "deleted": false
 ```
   
-* 全データを取得する際のsample.jsonの記載例(2)  
+* 全データを登録する際のsample.jsonの記載例(2)  
 
-全データを取得する場合、sample.json は以下のように記載します。  
+全データを登録する場合、sample.json は以下のように記載します。  
 
 ```
-"api_schema": "SAPMaintenanceItemCreate",
+"api_schema": "SAPMaintenanceItemCreates",
 "accepter": ["All"],
-"maintenance_item": "",
+"maintenance_plan": "1",
 "deleted": false
 ```
 ## 指定されたデータ種別のコール
@@ -65,7 +65,7 @@ func (c *SAPAPICaller) AsyncPostMaintenanceItem(
 	item              *requests.Item,
 	accepter []string) {
 	wg := &sync.WaitGroup{}
-	wg.Add(1)
+    wg.Add(len(accepter))
 	for _, fn := range accepter {
 		switch fn {
 		case "Item":
@@ -89,8 +89,8 @@ func (c *SAPAPICaller) AsyncPostMaintenanceItem(
 
 
 ```
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-creates/SAP_API_Caller/caller.go#L50",
-	"function": "sap-api-integrations-creates/SAP_API_Caller.(*SAPAPICaller).Header",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-maintenance-item-creates/SAP_API_Caller/caller.go#L50",
+	"function": "sap-api-integrations-maintenance-item-creates/SAP_API_Caller.(*SAPAPICaller).Header",
 	"level": "INFO",
 	"message": "[{XXXXXXXXXXXXXXXXXXXXXXXXXXXXX}]",
 	"time": "2021-12-11T15:33:00.054455+09:00"

@@ -71,7 +71,7 @@
 			"PlannedStartDate": ""
 		}
 	},
-	"api_schema": "MaintenanceItem",
+	"api_schema": "SAPMaintenanceItemCreates",
 	"accepter": ["Item"],
 	"maintenance_plan": "1",
 	"deleted": false
